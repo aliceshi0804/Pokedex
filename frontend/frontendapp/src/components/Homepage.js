@@ -4,6 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import './Homepage.css';
 import Card from './card.js'
 import getPokemon from '../services/pokeapi'
+import Header from './Header'
 
 function Homepage() {
   const amountOfPoKemons = 1118
@@ -45,8 +46,10 @@ function Homepage() {
   }, []);
 
   return (
+    
     <div className="container">
-      <h1>Pokédex</h1>
+    <Header/>
+    <br></br>
       <InfiniteScroll 
         className="pokedex"
         dataLength={pokemons.length}
@@ -69,6 +72,7 @@ function Homepage() {
             name={pokemon.name}
             types={pokemon.types}
             sprites={pokemon.sprites}
+            abilities={pokemon.abiliites}
           />
         ))}
       </InfiniteScroll>  
