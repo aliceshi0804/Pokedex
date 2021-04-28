@@ -20,7 +20,6 @@ export default function Card(props) {
   const handleClose = () => {
     setOpen(false);
   };
-    
 
   return (
     <div className={`card ${elementTypes[0]}`}>
@@ -40,8 +39,21 @@ export default function Card(props) {
       <DialogContent>
         <DialogContentText>
           <img className="card-image" src={`${getPokemonImage(props.sprites)}`} alt={`${props.name}`}/>
+          <div>
           <h2 className="card-title">{`${props.name}`}</h2>
-          <p className="card-subtitle">{`${elementTypes.join(' | ')}`}</p>
+          </div>
+          <p className="card-detail">
+            
+            Type: {`${elementTypes.join(' | ')}`}
+            <br></br>
+            Height: {`${props.height}`}
+            <br></br>
+            Weight: {`${props.weight}`}
+            <br></br>
+            Ability: {`${props.ability}`}
+            <br></br>
+          
+          </p>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

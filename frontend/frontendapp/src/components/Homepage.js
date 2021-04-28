@@ -72,7 +72,9 @@ function Homepage() {
             name={pokemon.name}
             types={pokemon.types}
             sprites={pokemon.sprites}
-            abilities={pokemon.abiliites}
+            weight={pokemon.weight}
+            height={pokemon.height}
+            ability={pokemon.abilities[0].ability.name}
           />
         ))}
       </InfiniteScroll>  

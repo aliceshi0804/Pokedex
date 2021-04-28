@@ -42,9 +42,11 @@ class Login extends Component {
       .then((data) => data.json())
       .then((data) => {
         console.log(data.token);
-        alert("✔️ This works on every component!");
+        alert("Registered! Please log in.");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   inputChanged = (event) => {
