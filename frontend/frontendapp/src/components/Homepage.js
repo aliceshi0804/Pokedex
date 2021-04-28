@@ -6,7 +6,7 @@ import Card from './card.js'
 import getPokemon from '../services/pokeapi'
 import Header from './Header'
 
-function Homepage() {
+function Homepage({handleLogged}) {
   const amountOfPoKemons = 1118
   const limit = 50
 
@@ -14,6 +14,7 @@ function Homepage() {
   let [pokemons, setPokemons] = useState([])
   let [offset, setOffset] = useState(0)
   let [hasMore, setHasMore] = useState(true)
+  
 
   const fetchMoreData = () => {
     if (pokemons.length >= amountOfPoKemons) {
@@ -48,7 +49,7 @@ function Homepage() {
   return (
     
     <div className="container">
-    <Header/>
+    <Header isLogged={handleLogged}/>
     <br></br>
       <InfiniteScroll 
         className="pokedex"

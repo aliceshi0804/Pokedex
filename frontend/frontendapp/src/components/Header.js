@@ -6,7 +6,8 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
-
+import {NavLink, withRouter} from 'react-router-dom'
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
 	typography: {
@@ -67,8 +68,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+const Header = ({history,isLogged}) => {
+  const handleClick=() => {
+    history.push('/')
+    isLogged(false)
+  }
   const classes = useStyles();
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className={classes.root}>
@@ -90,11 +97,15 @@ export default function Header() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
             />
           </div>
-					<div><Button color="inherit">Log out</Button></div>
+					<div><Button color="inherit" onClick={handleClick}>Log out</Button></div>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+export default withRouter(Header);
